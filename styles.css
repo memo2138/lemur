@@ -1,0 +1,348 @@
+        /* == CONFIGURACIÓN VERTICAL Y ESTILOS BASE == */
+        body {
+            /* Permitimos el scroll vertical y ocultamos el horizontal */
+            overflow-x: hidden;
+            background-color: #000;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* El contenedor principal ahora es un bloque vertical normal */
+        #main-container {
+            width: 100%;
+        }
+
+        /* Estilo para cada "panel" o "página" de la web */
+        .page-section {
+            width: 100vw; /* Cada sección ocupa el 100% del ancho de la ventana */
+            height: 100vh;/* Y el 100% de la altura */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 80px;
+            box-sizing: border-box; /* Para que el padding no afecte el tamaño total */
+            position: relative; /* Necesario para elementos superpuestos */
+            overflow: hidden;
+        }
+
+        /* == HEADER Y FOOTER (FIJOS) == */
+        #header_principal, #footer {
+            position: fixed; /* Fijos en la pantalla mientras el contenido se desliza */
+            width: calc(100% - 160px); /* Ajustamos al padding de las secciones */
+            left: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 2px;
+        }
+
+        #header_principal {
+            top: 0;
+            padding-top: 40px;
+        }
+        
+        #footer {
+            bottom: 0;
+            padding-bottom: 40px;
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        #logo {
+            font-size: 32px;
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        #navegacion a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+        #navegacion a:hover {
+            color: #fff;
+        }
+
+        /* == ESTILOS ESPECÍFICOS PARA CADA SECCIÓN == */
+
+        /* 1. HERO */
+        #hero h1 {
+            font-family: 'Anton', sans-serif;
+            font-size: 30vw; 
+            line-height: 0.8;
+            color: #fff;
+            /* Las siguientes dos líneas fueron eliminadas para asegurar la visibilidad */
+            animation: aparecer 2s ease-out forwards;
+        }
+
+        @keyframes aparecer {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        /* 2. INTRODUCCIÓN */
+        #intro {
+            background-color: #111;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start; /* Alineamos a la izquierda */
+        }
+        #intro h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 100px;
+            letter-spacing: 5px;
+            color: #00FFC2; /* Color de acento */
+            margin: 0;
+            padding: 0;
+        }
+        #intro p {
+            max-width: 600px; /* Limitamos el ancho del párrafo */
+            font-size: 20px;
+            line-height: 1.7;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* 3. BANNER */
+        #banner {
+            padding: 0;
+            background-image: url('https://zoobarcelona.cat/sites/default/files/animal/2016-12/Lemur%20catta2.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* 4. SECCIONES (Los 3 botones) */
+        #links-secciones {
+            gap: 50px;
+            background-color: #050505;
+        }
+        .boton-seccion {
+            border: 3px solid rgba(255,255,255,0.2);
+            height: 400px;
+            width: 300px;
+            display: flex;
+            align-items: flex-end; /* Alineamos el texto abajo */
+            padding: 40px;
+            text-decoration: none;
+            color: #fff;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 50px;
+            letter-spacing: 3px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        .boton-seccion::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: #00FFC2;
+            transform: scaleY(0); /* Empieza escalado a 0 */
+            transform-origin: bottom;
+            transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            z-index: -1;
+        }
+        .boton-seccion:hover {
+            color: #000;
+            border-color: #00FFC2;
+        }
+        .boton-seccion:hover::before {
+            transform: scaleY(1); /* Se expande hacia arriba en el hover */
+        }
+
+        /* 5. GALERIA */
+        #galeria {
+            padding: 0;
+            display: flex;
+            gap: 0;
+        }
+        .imagen-galeria {
+            width: 50%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: grayscale(100%); /* Inicialmente en blanco y negro */
+            transition: all 0.5s ease;
+        }
+        .imagen-galeria:hover {
+            filter: grayscale(0%); /* Revela el color en hover */
+            transform: scale(1.05); /* Zoom sutil */
+        }
+
+        #intro_text{
+            text-align: justify;
+        }
+
+        /*elementos de caracteristicas*/
+        #caracteristicas-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            width: 100%;
+        }
+                .imagen-caracteristicas {
+            width: 500px;
+            height: 700px;
+            flex-shrink: 0;
+            background-image: url('https://cdn.pixabay.com/photo/2022/08/15/15/38/animal-7388186_1280.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .texto-caracteristicas h2 {
+            font-family: 'Anton', sans-serif;
+            font-size: 150px;
+            line-height: 1;
+            color: #fff;
+            margin: 0 0 30px 0;
+        }
+        
+        .texto-caracteristicas ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .texto-caracteristicas li {
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 1.8;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px 0;
+        }
+
+        .texto-caracteristicas li:last-child {
+            border-bottom: none;
+        }
+
+        .texto-caracteristicas strong {
+            font-weight: 700;
+            color: #00FFC2;
+        }
+         #social-section {
+            background-color: #000; /* Fondo ligeramente distinto para separar secciones */
+        }
+        
+        #social-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            width: 100%;
+        }
+
+        .imagen-social {
+            width: 500px;
+            height: 700px;
+            flex-shrink: 0;
+            background-image: url('https://cdn.pixabay.com/photo/2022/01/21/07/21/ring-tailed-lemur-6954076_1280.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /*habitat*/
+        .habitat-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            width: 100%;
+        }
+
+        .texto-habitat h2 {
+            font-family: 'Anton', sans-serif;
+            font-size: 150px;
+            line-height: 1;
+            color: #fff;
+            margin: 0 0 30px 0;
+        }
+        
+        .texto-habitat p {
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 1.8;
+            max-width: 600px;
+        }
+
+        .texto-habitat strong {
+            font-weight: 700;
+            color: #00FFC2;
+        }
+        
+        /* Contenido de la primera sección (Ecosistemas) */
+        .imagen-ecosistemas {
+            width: 500px;
+            height: 700px;
+            flex-shrink: 0;
+            background-image: url('https://content.nationalgeographic.com.es/medio/2014/07/31/13008_1000x674.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* Contenido de la segunda sección (Isla Única) */
+        #endemismo-section {
+            background-color: #000;
+        }
+        
+        .imagen-endemismo {
+            width: 500px;
+            height: 700px;
+            flex-shrink: 0;
+            background-image: url('https://cdn2.rhinoafrica.com/thumbnails/media/_en/destinations/root/africa/indian-ocean-islands/madagascar/eastern-madagascar/_img/45315/image-thumb__45315__background-cover/constance-tsarabanjina-views-aerial-06.57b86834.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+                /* Estilos genéricos para el contenido */
+        .alimentacion-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            width: 100%;
+        }
+/* Estilos específicos para la sección de alimentación */
+        .texto-alimentacion h2 {
+            font-family: 'Anton', sans-serif;
+            font-size: 150px;
+            line-height: 1;
+            color: #fff;
+            margin: 0 0 30px 0;
+        }
+        
+        .texto-alimentacion p {
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 1.8;
+            max-width: 600px;
+        }
+
+        .texto-alimentacion strong {
+            font-weight: 700;
+            color: #00FFC2;
+        }
+        
+        /* Contenido de la primera sección (Dieta Principal) */
+        .imagen-dieta {
+            width: 500px;
+            height: 700px;
+            flex-shrink: 0;
+            background-image: url('https://st2.depositphotos.com/3352229/47163/i/450/depositphotos_471631168-stock-photo-crowned-lemur-eulemur-coronatus-primate.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* Contenido de la segunda sección (Especialistas) */
+        #especialistas-section {
+            background-color: #000;
+        }
+        
+        .imagen-especialistas {
+            width: 500px;
+            height: 700px;
+            flex-shrink: 0;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Wild_aye_aye.jpg/960px-Wild_aye_aye.jpg');
+            background-size: cover;
+            background-position: center;
+        }
