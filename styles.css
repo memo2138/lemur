@@ -1,5 +1,5 @@
         body {
-            /* Permitimos el scroll vertical y ocultamos el horizontal */
+            /* Permitir el scroll vertical y ocultamos el horizontal */
             overflow-x: hidden;
             background-color: #000;
             color: #fff;
